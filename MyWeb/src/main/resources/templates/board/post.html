@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        #title {
+            height: 60px;
+        }
+        #userId {
+            height: 40px;
+        }
+        #body {
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" style="max-width: 1200px">
+    <div>
+        <h4 id="title" th:text="${post.title}">게시글 제목</h4>
+    </div>
+
+    <hr class="my-4">
+
+    <div>
+        <span id="userId">
+            <a href="/board/main.html" th:href="@{|/board?member=${post.uploaderId}|}"
+               th:text="${post.uploaderName}">작성자</a>
+        </span>
+        <span id="time" th:text="${post.time}">작성 시간</span>
+    </div>
+
+    <hr class="my-4">
+
+    <div id="body">
+        <p th:text="${post.body}">본문</p>
+        <div class="row">
+            <div class="col" style="max-width:160px">
+                <button type="button" class="w-100 btn btn-primary btn-lg">
+                    <span th:text="#{button.up}">추천</span>
+                    <span th:text="${post.up}">추천 수</span>
+                </button>
+            </div>
+            <div class="col" style="max-width:160px">
+                <button type="button" class="w-100 btn btn-primary btn-lg">
+                    <span th:text="#{button.down}">비추천</span>
+                    <span th:text="${post.down}">비추천 수</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+</div>
+
+</body>
+</html>
